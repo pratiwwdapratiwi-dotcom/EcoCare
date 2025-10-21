@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoCare - Jaga Lingkungan, Sehatkan Kehidupan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2d7a3e 0%, #4caf50 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo::before {
+            content: "🌱";
+            font-size: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        nav ul li a:hover {
+            color: #a5d6a7;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(45, 122, 62, 0.8), rgba(76, 175, 80, 0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%234caf50" width="1200" height="600"/><circle fill="%232d7a3e" cx="200" cy="100" r="80"/><circle fill="%2366bb6a" cx="800" cy="400" r="120"/><circle fill="%232d7a3e" cx="1000" cy="150" r="60"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s;
+        }
+
+        .hero-content .tagline {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: white;
+            color: #2d7a3e;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1.2s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2d7a3e;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: #4caf50;
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .about-card {
+            background: #f1f8f4;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .about-card .icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-card h3 {
+            color: #2d7a3e;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Programs Section */
+        .programs {
+            background: #f9f9f9;
+            padding: 5rem 2rem;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .program-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .program-card:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+        }
+
+        .program-card h3 {
+            color: #2d7a3e;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .program-card .emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* Founder Section */
+        .founder {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .founder-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            padding: 3rem;
+            border-radius: 20px;
+        }
+
+        .founder-image {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+        }
+
+        .founder-image .avatar {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #4caf50, #2d7a3e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .founder-info {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .founder-info h3 {
+            color: #2d7a3e;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .founder-info .title {
+            color: #666;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .founder-info p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            width: fit-content;
+        }
+
+        .contact-info .phone-icon {
+            font-size: 2rem;
+        }
+
+        .contact-info a {
+            color: #2d7a3e;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #2d7a3e 0%, #4caf50 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        .contact-card a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: #1b5e20;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content .tagline {
+                font-size: 1.3rem;
+            }
+
+            .founder-content {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">EcoCare</div>
+            <ul>
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#programs">Program</a></li>
+                <li><a href="#founder">Pencetus</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>🌱 EcoCare</h1>
+            <p class="tagline">Jaga Lingkungan, Sehatkan Kehidupan</p>
+            <a href="#about" class="cta-button">Mulai Peduli Sekarang</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2 class="section-title">Tentang EcoCare</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.1rem; color: #666;">
+            EcoCare adalah gerakan peduli lingkungan yang bertujuan untuk menciptakan kehidupan yang lebih sehat 
+            melalui pelestarian alam dan praktik ramah lingkungan.
+        </p>
+        <div class="about-content">
+            <div class="about-card">
+                <div class="icon">🌍</div>
+                <h3>Lingkungan Lestari</h3>
+                <p>Menjaga kelestarian lingkungan untuk generasi masa depan yang lebih baik.</p>
+            </div>
+            <div class="about-card">
+                <div class="icon">💚</div>
+                <h3>Hidup Sehat</h3>
+                <p>Menciptakan gaya hidup sehat melalui lingkungan yang bersih dan asri.</p>
+            </div>
+            <div class="about-card">
+                <div class="icon">🤝</div>
+                <h3>Komunitas Peduli</h3>
+                <p>Membangun komunitas yang peduli dan aktif dalam aksi lingkungan.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="programs">
+        <h2 class="section-title">Program Kami</h2>
+        <div class="programs-grid">
+            <div class="program-card">
+                <span class="emoji">♻️</span>
+                <h3>Daur Ulang Sampah</h3>
+                <p>Edukasi dan praktik daur ulang sampah untuk mengurangi limbah dan menciptakan produk bernilai.</p>
+            </div>
+            <div class="program-card">
+                <span class="emoji">🌳</span>
+                <h3>Penanaman Pohon</h3>
+                <p>Gerakan penanaman pohon untuk menambah ruang hijau dan memperbaiki kualitas udara.</p>
+            </div>
+            <div class="program-card">
+                <span class="emoji">🚯</span>
+                <h3>Bersih-Bersih Lingkungan</h3>
+                <p>Aksi bersih-bersih rutin untuk menjaga kebersihan lingkungan sekitar.</p>
+            </div>
+            <div class="program-card">
+                <span class="emoji">📚</span>
+                <h3>Edukasi Lingkungan</h3>
+                <p>Program edukasi tentang pentingnya menjaga lingkungan kepada masyarakat.</p>
+            </div>
+            <div class="program-card">
+                <span class="emoji">🌾</span>
+                <h3>Urban Farming</h3>
+                <p>Mengembangkan pertanian kota untuk ketahanan pangan dan penghijauan.</p>
+            </div>
+            <div class="program-card">
+                <span class="emoji">💡</span>
+                <h3>Hemat Energi</h3>
+                <p>Kampanye penggunaan energi terbarukan dan efisiensi energi.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section id="founder" class="founder">
+        <h2 class="section-title">Pencetus EcoCare</h2>
+        <div class="founder-content">
+            <div class="founder-image">
+                <div class="avatar">👩</div>
+            </div>
+            <div class="founder-info">
+                <h3>Widia Pratiwi</h3>
+                <p class="title">Pencetus & Founder EcoCare</p>
+                <p>
+                    Dengan visi menciptakan lingkungan yang lebih sehat dan berkelanjutan, 
+                    Widia Pratiwi menginisiasi EcoCare sebagai wadah bagi seluruh masyarakat 
+                    yang peduli terhadap kelestarian lingkungan.
+                </p>
+                <p>
+                    "Mari bersama-sama menjaga bumi kita, karena lingkungan yang sehat 
+                    adalah kunci kehidupan yang lebih baik untuk kita semua."
+                </p>
+                <div class="contact-info">
+                    <span class="phone-icon">📱</span>
+                    <a href="tel:085377358573">085377358573</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2 class="section-title" style="color: white;">Hubungi Kami</h2>
+        <p style="max-width: 600px; margin: 0 auto 2rem; font-size: 1.1rem;">
+            Ayo bergabung dengan EcoCare! Hubungi kami untuk informasi lebih lanjut atau untuk berpartisipasi dalam program kami.
+        </p>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="icon">📞</div>
+                <h3>Telepon</h3>
+                <a href="tel:085377358573">085377358573</a>
+            </div>
+            <div class="contact-card">
+                <div class="icon">💬</div>
+                <h3>WhatsApp</h3>
+                <a href="https://wa.me/6285377358573" target="_blank">Chat Sekarang</a>
+            </div>
+            <div class="contact-card">
+                <div class="icon">📧</div>
+                <h3>Email</h3>
+                <a href="mailto:info@ecocare.id">info@ecocare.id</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 EcoCare - Jaga Lingkungan, Sehatkan Kehidupan</p>
+        <p>Pencetus: Widia Pratiwi | 📱 085377358573</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">Bersama kita jaga bumi, untuk masa depan yang lebih hijau 🌱</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animation
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'linear-gradient(135deg, #1b5e20 0%, #2d7a3e 100%)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #2d7a3e 0%, #4caf50 100%)';
+            }
+        });
+    </script>
+</body>
+</html>
